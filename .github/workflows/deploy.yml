@@ -1,0 +1,24 @@
+name: Deploiement Projet Phoenix
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploiement:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Message de démarrage
+        run: echo "Début du déploiement"
+
+      - name: Affichage du token sécurisé
+        # On récupère la valeur du secret DEPLOY_TOKEN
+        env:
+          TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        # GitHub masquera automatiquement la valeur par des *** dans les logs
+        run: echo "Le token de déploiement utilisé est $TOKEN"
+
+      - name: Message de fin de déploiement
+        run: echo "Déploiement terminé par Habiba Dairou"
